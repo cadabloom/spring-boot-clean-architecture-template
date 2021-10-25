@@ -21,6 +21,7 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
 import com.cadabloom.infrastructure.persistence.configuration.PersistenceConfiguration;
 
 import core.features.product.commands.deleteallproduct.DeleteAllProductCommandHandler;
+import core.features.product.queries.getproductdetail.GetProductDetailQueryHandler;
 import core.mediatior.RequestMediator;
 import core.mediatior.RequestHandler;
 import core.mediatior.TestHandler;
@@ -53,10 +54,12 @@ public class AppApplication {
     }
     
     @Bean
-    RequestMediator mediatorImpl(DeleteAllProductCommandHandler deleteAllProductCommandHandler) {
+    RequestMediator mediatorImpl(DeleteAllProductCommandHandler deleteAllProductCommandHandler, GetProductDetailQueryHandler getProductDetailQueryHandler) {
+    	//TODO: perform dynamic loading of all handlers
     	List<RequestHandler> handlers = new ArrayList<>();
 		handlers.add(new TestHandler());
 		handlers.add(deleteAllProductCommandHandler);
+		handlers.add(getProductDetailQueryHandler);
 		RequestMediator mediator = new RequestMediator(handlers);
 		return mediator;
     }

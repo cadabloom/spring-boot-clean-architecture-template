@@ -1,4 +1,4 @@
-package com.cadabloom.infrastructure.persistence;
+package com.cadabloom.infrastructure.persistence.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

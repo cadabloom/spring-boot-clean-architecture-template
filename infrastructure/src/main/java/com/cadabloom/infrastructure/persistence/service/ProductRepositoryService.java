@@ -1,6 +1,6 @@
 package com.cadabloom.infrastructure.persistence.service;
 
-import com.cadabloom.infrastructure.persistence.ProductMapper;
+import com.cadabloom.infrastructure.persistence.mapper.ProductMapper;
 import com.cadabloom.infrastructure.persistence.repository.ProductRepository;
 
 import core.contracts.persistence.GenericRepository;
@@ -18,7 +18,7 @@ public class ProductRepositoryService implements GenericRepository<Product> {
 
 	@Override
 	public Product save(Product product) {
-		com.cadabloom.infrastructure.persistence.Product entity = productMapper.productToProductEntity(product);
+		com.cadabloom.infrastructure.persistence.entities.Product entity = productMapper.productToProductEntity(product);
 		productRepository.save(entity);
 		return productMapper.productEntityToProduct(entity);
 	}
@@ -27,5 +27,11 @@ public class ProductRepositoryService implements GenericRepository<Product> {
 	public Boolean deleteAll() {
 		productRepository.deleteAll();
 		return true;
+	}
+
+	@Override
+	public Product findById(int id) {
+		com.cadabloom.infrastructure.persistence.entities.Product entity = productRepository.findById(id).orElse(null);
+		return productMapper.productEntityToProduct(entity);
 	}
 }

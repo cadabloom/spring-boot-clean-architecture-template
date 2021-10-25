@@ -4,4 +4,8 @@ Multi module clean architecture template using spring-boot, mapstruct and a cust
 
 Interactor samples using boundaries and mediator
 
-TODO: move mediator into its own module(currently inside core)
+TODO: 
+- move mediator into its own module(currently inside core)
+- create baseresponse
+- create validators
+- create sample exception case
