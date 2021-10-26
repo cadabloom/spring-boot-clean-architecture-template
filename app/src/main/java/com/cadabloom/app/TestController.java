@@ -1,6 +1,5 @@
 package com.cadabloom.app;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cadabloom.infrastructure.persistence.entities.Product;
-import com.cadabloom.infrastructure.persistence.mapper.ProductMapper;
 import com.cadabloom.infrastructure.persistence.repository.ProductRepository;
 
 import core.features.product.commands.createproduct.CreateProductCommand;
@@ -18,9 +16,7 @@ import core.features.product.commands.deleteallproduct.DeleteAllProductCommand;
 import core.features.product.commands.deleteallproduct.DeleteAllProductCommandDto;
 import core.features.product.queries.getproductdetail.GetProductDetailQuery;
 import core.features.product.queries.getproductdetail.ProductDetailDto;
-import core.mediatior.RequestMediator;
-import core.mediatior.RequestHandler;
-import core.mediatior.TestHandler;
+import core.mediatior.Mediator;
 import core.mediatior.TestRequest;
 
 @RestController
@@ -32,7 +28,7 @@ public class TestController {
 	CreateProductCommand createProductCommand;
 	
 	@Autowired
-	RequestMediator mediator;
+	Mediator mediator;
 
 	@GetMapping("/products")  
 	private List<Product> getAll()   

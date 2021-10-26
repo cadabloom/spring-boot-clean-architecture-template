@@ -54,12 +54,10 @@ public class AppApplication {
     }
     
     @Bean
-    RequestMediator mediatorImpl(DeleteAllProductCommandHandler deleteAllProductCommandHandler, GetProductDetailQueryHandler getProductDetailQueryHandler) {
-    	//TODO: perform dynamic loading of all handlers
+    RequestMediator Mediator(List<RequestHandler> requestHandlers) {
     	List<RequestHandler> handlers = new ArrayList<>();
-		handlers.add(new TestHandler());
-		handlers.add(deleteAllProductCommandHandler);
-		handlers.add(getProductDetailQueryHandler);
+    	handlers.addAll(requestHandlers);
+		handlers.add(new TestHandler()); //remove this line later, for demo purposes only
 		RequestMediator mediator = new RequestMediator(handlers);
 		return mediator;
     }
