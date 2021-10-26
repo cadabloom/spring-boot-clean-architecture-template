@@ -34,7 +34,11 @@ public class TestController {
 	private List<Product> getAll()   
 	{  
 		CreateProductDto dto = createProductCommand.create("test");
-		return productRepository.findAll();  
+		//for demo only - line bellow should not be called here - this is just a playground for people to convert using the correct approach
+		//create a queryrequest under a specific feature in core
+		//create dto and handlers there
+		//then use mediator to get all products
+		return productRepository.findAll(); 
 		
 	}  
 	
